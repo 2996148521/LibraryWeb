@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" href="__PUBLIC__/LibraryWeb/image/favicon.ico">
+	<title>修改图书</title>
+	<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
+	<!-- 公共样式 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/login.css">
+	<!-- 移动端 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/move.css" media="screen and (max-width:768px)">
+	<!-- ipda端 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/ipda.css" media="screen and (max-width:992px) and (min-width:768px)">
+	<!-- pc端 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/pc.css" media="screen and (min-width:992px)">
+	<style type="text/css">
+		.td2{
+			width: 120px;
+		}
+		.table{
+			text-align: center;
+		}
+	</style>
+
+</head>
+<body>
+	<!-- 导航条开始 -->
+	<div class="nav">
+		<div class="warp">
+			<div class="logo"></div>
+			<div class="search">
+			</div>
+			<div class="nav-bar">
+				<ul>
+					<li class="nav-active"><a href="{:U('index/index')}">首页</a></li>
+					<li><a href="">公告</a></li>
+				</ul>
+			</div>
+			<div class="btn"><i class="fa fa-bars" aria-hidden="true"></i></div>
+		</div>
+	</div>
+<!-- 导航条结束 -->
+<div style="margin-top: 66px;">
+		<table class="table" border="0" callpadding="0" cellspacing="0">
+		<thead>
+			<th>ISBN编码</th>
+			<th>名称</th>
+			<th>作者</th>
+			<th>出版社</th>
+			<th>出版日期</th>
+			<th>数量</th>
+			<th>租金(元/天)</th>
+			<th>操作</th>
+		</thead>
+		<tbody>
+		<form action="{:U('UpdateBook')}" method="post">
+			<tr>
+			<td>
+				<input type="text" value="<?php echo $_SESSION['info']['book_isbn'];?>" placeholder="ISBN编码" name="isbn">
+			</td>
+			<td><input type="text" value="<?php echo $_SESSION['info']['book_name'];?>" placeholder="名称" name="mincheng"></td>
+			<td><input type="text" value="<?php echo $_SESSION['info']['book_author'];?>" placeholder="作者" name="zuozhe"></td>
+			<td><input type="text" value="<?php echo $_SESSION['info']['book_press'];?>" placeholder="出版社" name="chubanshe"></td>
+			<td><input type="text" value="<?php echo $_SESSION['info']['book_date'];?>" placeholder="出版日期" name="chubanriqi"></td>
+			<td><input type="text" class="td2" value="<?php echo $_SESSION['info']['book_num'];?>" placeholder="数量" name="num"></td>
+			<td><input type="text" class="td2" value="<?php echo $_SESSION['info']['book_price'];?>" placeholder="租金" name="zujin"></td>
+			<td><input type="submit" name="" value="更新"></td>
+			</tr>
+		</form>
+	</tbody>
+</table>
+</div>
+</body>
+</html>

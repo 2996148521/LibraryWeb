@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" href="__PUBLIC__/LibraryWeb/image/favicon.ico">
+	<title>登录</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<!-- 公共样式 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/register.css">
+		<!-- 移动端 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/move.css" media="screen and (max-width:768px)">
+	<!-- ipda端 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/ipda.css" media="screen and (max-width:992px) and (min-width:768px)">
+	<!-- pc端 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/pc.css" media="screen and (min-width:992px)">
+	<style>
+		ul{
+			list-style: none;
+		}
+		li{
+			padding-left: 20px;
+		}
+	</style>
+</head>
+<body>
+<div class="nav">
+	<div class="nav_logo"></div>
+	<div class="nav_index">
+		<ul>
+			<li style="float: right;"><a href="{:U('index')}">首页</a></li>
+			<li style="float: right;"><a href="{:U('register')}">注册</a></li>
+		</ul>
+	</div>
+</div>
+<div class="main">
+	<div class="first_div"  id="first_div">
+		<div><h1>登录</h1></div>
+		<div class="second_div">
+			<form action="{:U('checklogin')}" method="post" accept-charset="utf-8">
+				<input type="text" placeholder="用户名" class="ipt" name="user" id="username">
+				<input type="password" placeholder="密码" class="ipt" name="psd" id="password">
+				<div class="div_check">
+					<div>
+					<input type="checkbox" checked>
+					<span>记住我</span>
+					<a href="">忘记密码</a>
+				</div>
+				</div>
+				<input id="btn" type="submit" value="登录" class="submit">
+			</form>
+	</div>
+	</div>
+</div>
+</body>
+</html>

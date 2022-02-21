@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" href="__PUBLIC__/LibraryWeb/image/favicon.ico">
+	<title>修改用户信息</title>
+	<link rel="stylesheet" href="">
+	<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.css" rel="stylesheet">
+	<style type="text/css">
+		.td1{
+			display: none;
+		}
+		.table{
+			text-align: center;
+		}
+		td{
+			width: 372px;
+		}
+	</style>
+
+</head>
+<body>
+		<table class="table" border="0" callpadding="0" cellspacing="0">
+		<thead>
+			<!-- <th></th> -->
+			<th>用户名</th>
+			<th>密码</th>
+			<th>是否管理员</th>
+			<th>操作</th>
+		</thead>
+		<tbody>
+		<form action="{:U('UpdateUser')}" method="post">
+			<tr>
+			<!-- <td></td> -->
+			<td><input type="text" readonly value="<?php echo $_SESSION['Account']['username'];?>"  name="username"></td>
+			<td><input type="password" value="" name="password"></td>
+			<td>
+				<select name="root">
+					<option value="否">否</option>
+					<option value="是">是</option>
+				</select>
+			</td>
+			<td><input type="submit" name="" value="更新"></td>
+			</tr>
+		</form>
+	</tbody>
+</table>
+</body>
+</html>

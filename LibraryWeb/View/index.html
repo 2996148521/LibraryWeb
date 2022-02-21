@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>首页</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="__PUBLIC__/LibraryWeb/image/favicon.ico">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<!-- 公共样式 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/login.css">
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/ce.css">
+	<!-- 移动端 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/move.css" media="screen and (max-width:768px)">
+	<!-- ipda端 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/ipda.css" media="screen and (max-width:992px) and (min-width:768px)">
+	<!-- pc端 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/pc.css" media="screen and (min-width:992px)">
+	<script type="text/javascript">
+	/*打开侧栏，修改侧栏宽度，主体左跨度、背景透明度*/
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "200px";
+        document.getElementById("main").style.marginLeft = "0px";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }
+    /*关闭侧栏，恢复原始侧栏宽度，主体左跨度、背景透明度*/
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft= "0";
+      document.body.style.backgroundColor = "rgba(195, 195, 195, 0.4)";
+    }
+</script>
+
+</head>
+<body>
+	<!-- 导航条开始 -->
+	<div class="nav">
+		<div class="warp">
+			<div style="float: left;height:66px;line-height: 60px;width: 8%;">
+			<?php if($_SESSION['username']!=null){?>
+			<div id="main" class="main" style="font-size:20px;cursor:pointer;color: #dea505" onclick="openNav()">&#9776; 菜单</div>
+			<?php } ?>
+			</div>
+
+			<div class="logo"></div>
+			<div class="search">
+				<form action="{:U('AdminConsole/BookLib')}?id=search" method="post">
+					<input type="text" placeholder="请输入书名、作者或ISBN码" class="ipt" name="search">
+					<button class="fa fa-search"></button>
+				</form>
+			</div>
+			<div class="nav-bar">
+				<ul>
+					<li class="nav-active"><a href="{:U('index/index')}">首页</a></li>
+					<li><a href="">公告</a></li>
+					<?php if($_SESSION['username']==null){?>
+					<li><a href="http://www.tp112.com/LibraryWeb/index/IntoLogin.html" target="_blank">登录</a></li>
+					<?php }else{ ?>
+					<li><a><?php echo "当前用户:".$_SESSION['username']; echo "           余额:".$_SESSION['balance'];?>元</a></li>
+					<?php } ?>
+				</ul>
+			</div>
+			<div class="btn"><i class="fa fa-bars" aria-hidden="true"></i></div>
+		</div>
+	<div id="mySidenav" class="sidenav">
+	    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<a href="{:U('users/Change_SelfPassword')}" target="_blank">修改密码</a><br>
+		<?php if(session('root')=="是"){?>
+		<a href="http://www.tp112.com/LibraryWeb/adminConsole/BookLib.html" target="_blank">图书操作</a><br>
+		<a href="http://www.tp112.com/LibraryWeb/selectUser/Display_User.html" target="_blank">查看所有用户</a><br>
+		<a href="http://www.tp112.com/LibraryWeb/Recovery/RecoveryUser.html" target="_blank">回收站</a><br>
+		<?php }else{?>
+		<a href="http://www.tp112.com/LibraryWeb/userConsole/BookLib.html" target="_blank">图书列表</a><br>
+		<a href="http://www.tp112.com/LibraryWeb/userConsole/OpenShopCar.html"  target="_blank">查看书架</a><br>
+		<a href="http://www.tp112.com/LibraryWeb/userConsole/History.html"  target="_blank">借书历史</a><br>
+		<?php }?>
+		<a href="{:U('LoginOut')}">退出</a>
+	</div>
+</div>
+<!-- 导航条结束 -->
+
+
+<!-- 登录开始 -->
+<div class="login">
+	<marquee onMouseOver="this.stop()" onMouseOut="this.start()" scrollamount="15">宠辱不惊，闲看书卷奥秘，去留无意，漫随书卷人生。阅书，读己，追随心灵的净土!世界读书日，我们一起翻开手中的书……
+	<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span>
+	多读书，行万里路。好读书，开卷有益。读好书，良师益友。勤读书，学海无涯。世界读书日，愿你遨游书海，其乐无穷。下笔如神，收获无限
+	</marquee>
+	<div class="warp">
+		<div class="xu-logo">
+			<img src="__PUBLIC__/LibraryWeb/image/bg.png" class="img1">
+		</div>
+<!-- 		<div class="form">
+			<form action="{:U('checklogin')}" method="post" accept-charset="utf-8">
+				<ul>
+					<li><a href="{:U('register')}">注册</a></li>
+				</ul>
+				<input type="text" placeholder="用户名" class="ipt" name="user" id="username">
+				<input type="password" placeholder="密码" class="ipt" name="psd" id="password">
+				<div class="rem">
+					<input type="checkbox" checked>
+					<span>记住我</span>
+					<a href="">忘记密码</a>
+				</div>
+				<input id="btn" type="submit" value="登录" class="submit">
+			</form>
+		</div> -->
+	</div>
+</div>
+<!-- 登录结束 -->
+
+<!-- 主体开始 -->
+<div class="home">
+	<div class="warp">
+		<!-- 新课速递开始 -->
+		<div class="new-course home-item">
+			<div class="home-warp">
+				<h3 class="title">新书速递</h3>
+				<div class="new-course-box">
+					<div>
+						<div>
+							<a href="__PUBLIC__/LibraryWeb/html/kaiduan.html" target="iframe"><img src="__PUBLIC__/LibraryWeb/image/kaiduan.jpg" class="img-border">
+								<p>我被困在了公交车上。 我要努力活下去。</p>
+							</a>
+						</div>
+					</div>
+					<div>
+						<div>
+							<a href="__PUBLIC__/LibraryWeb/html/jianlai.html" target="iframe">
+							<img src="__PUBLIC__/LibraryWeb/image/jianlai.jfif" class="img-border">
+							<p>我叫陈平安，平平安安的平安。我是一名剑客。</p>
+						</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 新课速递结束 -->
+
+		<!-- 最热课程榜开始 -->
+		<div class="hot-course home-item">
+			<div class="home-warp">
+				<h3 class="title">最热门图书榜&nbsp;&nbsp;<a href="">更多>></a></h3>
+				<div class="hot-course-box">
+					<div>
+						<div>
+							<a href="__PUBLIC__/LibraryWeb/html/yuanzun.html" target="iframe"><img src="__PUBLIC__/LibraryWeb/image/yuanzun.jfif" class="img-border">
+								<p class="hot-name">天地为炉，万物为铜，<br>阴阳为炭，造化为工。</p>
+								<a href="" class="anchor">天蚕土豆</a>
+								<p class="hot-comment">
+									<span>4元/天&nbsp;</span>
+									<a href="#">去评论>></a>
+								</p>
+							</a>
+						</div>
+					</div>
+					<div>
+						<div>
+							<a href="__PUBLIC__/LibraryWeb/html/quanzhigaoshou.html" target="iframe"><img src="__PUBLIC__/LibraryWeb/image/quanzhi.jpg" class="img-border">
+							<p class="hot-name">网游荣耀中被誉为教科书<br>级别的顶尖高手，因为种种原因遭到俱乐部的驱逐，离开职业圈的他寄身于一家网吧成了一个小小的网管，但是，拥有十年游戏经验的他，在荣耀新开的第十区重新投入了游戏，带着对往昔的回忆，和一把未完成的自制武器，开始了重返巅峰之路。</p></a>
+							<a href="" class="anchor">蝴蝶兰</a>
+							<p class="hot-comment">
+								<span>3元/天&nbsp;</span>
+								<a href="#">去评论>></a>
+							</p>
+						</div>
+					</div>
+					<div>
+						<div>
+							<a href="__PUBLIC__/LibraryWeb/html/changan.html" target="iframe"><img src="__PUBLIC__/LibraryWeb/image/changan.jpg" class="img-border">
+							<p class="hot-name">唐天宝三年，元月十四日，<br>长安。大唐皇都的居民不知道，上元节辉煌灯火亮起之时，等待他们的，将是场吞噬一切的劫难。 　　突厥、狼卫、绑架、暗杀、烈焰、焚城，毁灭长安城的齿轮已经开始转动。 而拯救长安的全部希望，只有一个即将被斩首的独眼死囚和短短的十二个时辰……</p></a>
+							<a href="" class="anchor">马伯庸</a>
+							<p class="hot-comment">
+								<span>3元/天&nbsp;</span>
+								<a href="#">去评论>></a>
+							</p>
+						</div>
+					</div>
+					<div>
+						<div>
+							<a href="__PUBLIC__/LibraryWeb/html/nitian.html" target="iframe"><img src="__PUBLIC__/LibraryWeb/image/nitian.jfif" class="img-border">
+							<p class="hot-name">掌天毒之珠，承邪神之血，<br>修逆天之力，一代邪神，君临天下！</p></a>
+							<a href="" class="anchor">云澈萧澈</a>
+							<p class="hot-comment">
+								<span>2.5元/天&nbsp;</span>
+								<a href="#">去评论>></a>
+							</p>
+						</div>
+					</div>
+					<div>
+						<div>
+							<a href="__PUBLIC__/LibraryWeb/html/mushen.html" target="iframe"><img src="__PUBLIC__/LibraryWeb/image/mushen.jpg" class="img-border">
+							<p class="hot-name">大墟的祖训说，天黑，别<br>出门。大墟残老村的老弱病残们从江边捡到了一个婴儿，取名秦牧，含辛茹苦将他养大。 这一天夜幕降临，黑暗笼罩大墟，秦牧走出了家门……做个春风中荡漾的反派吧！ 瞎子对他说。秦牧的反派之路，正在崛起！</p></a>
+							<a href="" class="anchor">宅猪</a>
+							<p class="hot-comment">
+								<span>2元/天&nbsp;</span>
+								<a href="#">去评论>></a>
+							</p>
+						</div>
+					</div>
+					<div>
+						<div>
+							<a href="__PUBLIC__/LibraryWeb/html/zhuxian.html" target="iframe"><img src="__PUBLIC__/LibraryWeb/image/zhuxian.jfif" class="img-border">
+							<p class="hot-name">这世间本是没有什么神仙<br>的，但自太古以来，人类眼见周遭世界，诸般奇异之事，电闪雷鸣，狂风暴雨，又有天灾人祸，伤亡无数，哀鸿遍野，决非人力所能为，所能抵挡。遂以为九天之上，有诸般神灵，九幽之下，亦是阴魂归处，阎罗殿堂。于是神仙之说，流传于世。无数人类子民，诚心叩拜，向着自己臆想创造出的各种神明顶礼膜拜，祈福诉苦，香火鼎盛……
+　　方今之世，正道大昌，邪魔退避。中原大地山灵水秀，人气鼎盛，物产丰富，为正派诸家牢牢占据。其中尤以“青云门”、“天音寺”、和“焚香谷”为三大支柱，是为领袖。
+　　这个故事，便是从“青云门”开始的。</p></a>
+							<a href="" class="anchor">萧鼎</a>
+							<p class="hot-comment">
+								<span>1元/天&nbsp;</span>
+								<a href="#">去评论>></a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="iframe" style="width:31%;position: absolute;top: 40%;right: 0;">
+			<iframe name="iframe" src="__PUBLIC__/LibraryWeb/html/shidu.html" width=100% height="800px" scrolling="auto" frameborder="0" ></iframe>
+		</div>
+		<!-- 最热课程榜结束 -->
+
+		<!-- 热门标签开始 -->
+		<div class="hot-tag home-item">
+			<div class="home-warp">
+				<h3 class="title">热门标签</h3>
+				<div class="hot-box">
+					<h5>租金</h5>
+					<a href="" class="anchor">1元/天</a>
+					<a href="" class="anchor">0.5元/天</a>
+					<a href="" class="anchor">2元/天</a>
+				</div>
+				<div class="hot-box">
+					<h5>类别</h5>
+					<a href="" class="anchor">恐怖</a>
+					<a href="" class="anchor">文学</a>
+					<a href="" class="anchor">科幻</a>
+				</div>
+				<div class="hot-box">
+					<h5>热门作者</h5>
+					<a href="" class="anchor">唐家三少</a>
+					<a href="" class="anchor">祈祷君</a>
+					<a href="" class="anchor">蝴蝶兰</a>
+				</div>
+				<div class="hot-box">
+					<h5>限时优惠</h5>
+					<a href="" class="anchor">历史</a>
+					<a href="" class="anchor">科幻</a>
+					<a href="" class="anchor">言情</a>
+				</div>
+			</div>
+		</div>
+		<!-- 热门标签结束 -->
+	</div>
+</div>
+<!-- 主体结束 -->
+</body>
+</html>
+<!--  -->

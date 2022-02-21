@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" href="__PUBLIC__/LibraryWeb/image/favicon.ico">
+	<title>注册</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<!-- 公共样式 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/register.css">
+		<!-- 移动端 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/move.css" media="screen and (max-width:768px)">
+	<!-- ipda端 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/ipda.css" media="screen and (max-width:992px) and (min-width:768px)">
+	<!-- pc端 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/pc.css" media="screen and (min-width:992px)">
+	<script type="text/javascript">
+//判断个函数   以上 5 个Radio 那个为选中状态
+function judgeRadioClicked()
+{
+    //获得 单选选按钮name集合
+    var radios = document.getElementsByName("checkRoot");
+    //根据 name集合长度 遍历name集合
+    for(var i=0;i<radios.length;i++)
+    {
+        //判断那个单选按钮为选中状态
+        if(radios[i].checked)
+        {
+            // //弹出选中单选按钮的值
+            // alert(radios[i].value);
+            if(radios[i].value=="no"){
+            	document.getElementById("num").style.display = "none";
+            	document.getElementById("first_div").style.height="350px";
+            }
+            else{
+            	document.getElementById("num").style.display = "inline";
+            	document.getElementById("first_div").style.height="400px";
+            }
+        }
+    }
+}
+
+</script>
+
+<script type="text/javascript">
+    // 验证码生成
+    var captcha_img = $('#verify_img');
+    var verifyimg = captcha_img.attr("src");
+    captcha_img.attr('title', '点击刷新');
+    captcha_img.click(function(){
+        if( verifyimg.indexOf('?')>0){
+            $(this).attr("src", verifyimg+'&random='+Math.random());
+        }else{
+            $(this).attr("src", verifyimg.replace(/\?.*$/,'')+'?'+Math.random());
+        }
+    });
+</script>
+
+</head>
+<body>
+<div class="nav">
+	<div class="nav_logo"></div>
+	<div class="nav_index"><a href="{:U('index')}">首页</a></div>
+</div>
+<div class="main">
+	<div class="first_div"  id="first_div">
+		<div><h1>注册</h1></div>
+		<div class="second_div">
+		<form action="{:U('RegisterId')}" method="post" accept-charset="utf-8">
+			<div>
+				<input type="text" placeholder="用户名" class="ipt" name="user">
+				<input type="password" placeholder="密码" class="ipt" name="psd">
+			</div>
+			<div class="div_check">
+				<div>
+					是否成为管理员&nbsp;&nbsp;<input type="radio"  value="no" name="checkRoot" onclick="judgeRadioClicked()" checked>否&nbsp;&nbsp;&nbsp;
+       			<input type="radio" value="yes"  onclick="judgeRadioClicked()"  name="checkRoot">是
+       			</div>
+       			<input type="text" placeholder="管理员邀请码" class="RootNum" id="num" name="rootnum">
+       		</div>
+       		<div class="code_div"><input type="text" name="code" placeholder="验证码" style="vertical-align:bottom"><img style="vertical-align:bottom" id="verify_img" src="{:U('Index/Verify')}" onclick="this.src=this.src+'?c='+Math.random()"></div>
+			<div class="sub"><a href="{:U('index/IntoLogin')}">已有账号，点击登录</a><br>
+			<input type="submit" value="注册" class="submit"></div>
+		</form>
+	</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>菜单</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="__PUBLIC__/LibraryWeb/image/favicon.ico">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<!-- 公共样式 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/login.css">
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/ce.css">
+	<!-- 移动端 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/move.css" media="screen and (max-width:768px)">
+	<!-- ipda端 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/ipda.css" media="screen and (max-width:992px) and (min-width:768px)">
+	<!-- pc端 -->
+	<link rel="stylesheet" href="__PUBLIC__/LibraryWeb/css/pc.css" media="screen and (min-width:992px)">
+	<script type="text/javascript">
+	/*打开侧栏，修改侧栏宽度，主体左跨度、背景透明度*/
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "200px";
+        document.getElementById("main").style.marginLeft = "0px";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }
+    /*关闭侧栏，恢复原始侧栏宽度，主体左跨度、背景透明度*/
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft= "0";
+      document.body.style.backgroundColor = "rgba(195, 195, 195, 0.4)";
+    }
+</script>
+
+</head>
+<body>
+	<!-- 导航条开始 -->
+	<div class="nav">
+		<div class="warp">
+			<?php if($_SESSION['username']==null){?>
+			<div class="logo"></div>
+			<?php }else{ ?>
+			<div class="logo"><div id="main" class="main" style="font-size:20px;cursor:pointer" onclick="openNav()">&#9776; open</div></div>
+			<?php } ?>
+			<div class="search">
+				<form action="{:U('AdminConsole/BookLib')}?id=search" method="post">
+					<input type="text" placeholder="请输入书名、作者或ISBN码" class="ipt" name="search">
+					<button class="fa fa-search"></button>
+				</form>
+			</div>
+			<div class="nav-bar">
+				<ul>
+					<li class="nav-active"><a href="{:U('index/index')}">首页</a></li>
+					<li><a href="">公告</a></li>
+					<li><a href=""><?php echo session("username");?></a></li>
+				</ul>
+			</div>
+			<div class="btn"><i class="fa fa-bars" aria-hidden="true"></i></div>
+			<div class="btn"><i class="fa fa-bars" aria-hidden="true"></i></div>
+		</div>
+		<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+	<a href="{:U('users/Change_SelfPassword')}" target="_blank">修改密码</a><br>
+	<a href="{:U('userConsole/BookLib')}" target="_blank">图书列表</a><br>
+	<a href="{:U('userConsole/OpenShopCar')}"  target="_blank">查看书架</a><br>
+	<a href="{:U('userConsole/History')}"  target="_blank">借书历史</a><br>
+	<a href="{:U('LoginOut')}">退出</a>
+</div>
+	</div>
+<!-- 导航条结束 -->
+
+
+</body>
+</html>
